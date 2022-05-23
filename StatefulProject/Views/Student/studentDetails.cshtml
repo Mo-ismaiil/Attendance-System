@@ -1,0 +1,212 @@
+﻿@model StatefulProject.Student
+
+@{
+    ViewData["Title"] = "studentDetails";
+}
+
+<h1>studentDetails</h1>
+
+<div>
+    <h4>student</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+</div>
+<div>
+    <button type="button" class="btn btn-primary" >
+          <a style="color:black" asp-action="studentUpdate" asp-route-id="@Model.StudentId">Edit</a> 
+        </button>
+        <button type="button" class="btn btn-info" >
+             <a style="color:black" asp-action="ShowStudents">Back to List</a>
+        </button>
+   
+   
+</div>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+
+                                 <p style="margin-left: 600px;">Personal Data</p>   
+                               </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+                                    <dl class="row">
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.User.FullNameEn)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.User.FullNameEn)
+                                        </dd>
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.User.FullNameAr)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.User.FullNameAr)
+                                        </dd>
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.User.Gender)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.User.Gender)
+                                        </dd>
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.User.BirthDate)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.User.BirthDate)
+                                        </dd>
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.Address)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.Address)
+                                        </dd>
+
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                       <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+       
+                                       
+                                           <p style="margin-left: 600px;"> Educational data</p>   
+                                    </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+      <div class="accordion-body">
+                                    <dl class="row">
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.DepartmentId)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.DepartmentId)
+                                        </dd>
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.StudentStatus)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.StudentStatus)
+                                        </dd>
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.Faculty)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.Faculty)
+                                        </dd>
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.University)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.University)
+                                        </dd>
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.Specialization)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.Specialization)
+                                        </dd>
+                                        <dt class="col-sm-5">
+                                            @Html.DisplayNameFor(model => model.GraduationGrade)
+                                        </dt>
+                                        <dd class="col-sm-4">
+                                            @Html.DisplayFor(model => model.GraduationGrade)
+                                        </dd>
+                                        <dl>
+                                </div>
+                            </div>
+                        </div>
+
+                       <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+  
+            <p style="margin-left: 600px;">  Contact info</p>   
+
+                                    
+  </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body">
+                                <dl class="row">
+                                    <dt class="col-sm-5">
+                                        @Html.DisplayNameFor(model => model.Mobile)
+                                    </dt>
+                                    <dd class="col-sm-4">
+                                        @Html.DisplayFor(model => model.Mobile)
+                                    </dd>
+                                    <dt class="col-sm-5">
+                                        @Html.DisplayNameFor(model => model.HomePhone)
+                                    </dt>
+                                    <dd class="col-sm-4">
+                                        @Html.DisplayFor(model => model.HomePhone)
+                                    </dd>
+                                    <dt class="col-sm-5">
+                                        @Html.DisplayNameFor(model => model.Code)
+                                    </dt>
+                                    <dd class="col-sm-4">
+                                        @Html.DisplayFor(model => model.Code)
+                                    </dd>
+                                    <dl>
+                            </div>
+    </div>
+  </div>
+</div>
+
+                        @*warning*@
+                        <div style="margin-left: 500px;" class="card-header" id="headingFour">
+                            <h5 class="mb-0">
+                                @*@{
+                                    string x1 = "red";
+                                    string x2 = "red";
+                                    string x3 = "red";
+                                    if (Model.warning == 1)
+                                    {
+                                        x1 = "black";
+                                    }
+                                    else if (Model.warning == 2)
+                                    {
+                                        x2 = "black";
+                                    }
+                                    else if (Model.warning == 3)
+                                    {
+                                        x3 = "black";
+                                    }
+                                 
+                                }*@
+                         @*making a hidden textbox to send the data when submitting*@
+                       @*  changed @x1,2,3 by red*@
+                                <form style=" display: inline-block;">
+
+                                    <input type="hidden" name="warning" value="1" />
+                                    <button style="border:5px solid red" class="btn btn-danger" onclick="submit()">
+                                        Warning 1
+                                    </button>
+                                </form>
+                                <form style=" display: inline-block;">
+                                    <input type="hidden" name="warning" value="2" />
+                                    <button style="border:5px solid red"  class="btn btn-danger" onclick="submit()">
+                                        Warning 2
+                                    </button>
+                                </form>
+                                <form style=" display: inline-block;">
+                                    <input type="hidden" name="warning" value="3" />
+                                    <button style="border:5px solid red"  class="btn btn-danger" onclick="submit()">
+                                        Expulsion
+                                    </button>
+                                </form>
+
+                         </h5>
+                        </div>
+                        
+
+                    </div>
+                </div>
+                </div>
+                <div class="card-footer text-muted">
+                   
+                </div>
+            </div>

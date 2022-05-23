@@ -1,0 +1,53 @@
+﻿@model IEnumerable<StatefulProject.StudentPermission>
+
+@{
+    ViewData["Title"] = "showStudentPermisssion";
+}
+
+<h1>showStudentPermisssion</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermissionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermissionState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstructorId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermissionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermissionState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstructorId)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

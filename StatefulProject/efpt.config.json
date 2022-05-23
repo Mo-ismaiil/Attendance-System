@@ -1,0 +1,191 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "ITICOMPSYSDB2Context",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": "DDData",
+   "OutputPath": "MMModels",
+   "ProjectRootNamespace": "StatefulProject",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[AspNetRoleClaims]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetRoles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserClaims]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserLogins]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserRoles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUsers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AspNetUserTokens]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Attendances]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[buildingAffairsAttendances]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[BuildingAffairsStaffs]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Comments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Companies]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[compnayJobProfiles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Departments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DeptCriteria]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Documents]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ExamQuestions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Exams]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[graduatedDepartments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GraduatedIntakes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GraduatedStudents]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Instructors]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Intakes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InterviewCriteria]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InterviewDept]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Interviewee]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InterviewResult]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ITIPrograms]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[JobProfiles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Messages]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Questions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Schedules]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StudentAnswers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StudentCompanies]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StudentExams]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[studentPermissions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Students]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Subjects]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Visitors]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "YOUSSEFMANSOUR-.ITICOMPSYSDB2",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}

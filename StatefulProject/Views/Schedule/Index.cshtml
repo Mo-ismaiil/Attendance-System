@@ -1,0 +1,111 @@
+﻿@model ScheduleViewModel
+
+@{
+}
+<div asp-validation-summary="All">
+</div>
+<div class="alert-primary container-fluid rounded shadow-sm" style="width: 80%; margin: auto; padding: 1em">
+        <h2>Schedule:</h2>
+        <table class="table text-center col-12">
+            <thead>
+                <tr>
+                    <th>
+                        Department
+                    </th>
+                    <th>
+                        Date from
+                    </th>
+                    <th>
+                        Date to
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                    <form method="POST">
+                <tr class="text-center">
+                    <td>
+                         <select asp-items="Model.Departments" asp-for="selectedDeptID" class="form-control">
+                            <option hidden > select a department </option>
+                        </select>
+                    </td>
+                    <td>
+                        <input asp-for="DateFrom" class="form-control">
+                    </td>
+                    <td>
+                        <input asp-for="DateTo" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button class="btn btn-primary">Show</button></td>
+                    <td></td>
+                </tr>
+                    </form>
+            </tbody>
+        </table>
+    </div>
+    <div class="container" style="width: 80%;">
+        @if(Model.HttpMethod == "POST")
+        {
+            int iterator = 0;
+            <form asp-action="SetSchedule" method="POST" style="width:100%; height:100%;">
+                <div class="" style="margin: auto; padding: 1em">
+                <input hidden name="DepartmentId" value="@Model.selectedDeptID">
+            @foreach (Schedule Sch in Model.GetSchedules)
+            {
+                <div class="card col-2 m-2 shadow-sm" style="height:50%; display:inline-block">
+                    <div class="card-title alert-primary text-center">                        
+                        @Sch.ScheduleDate.ToShortDateString()
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center justify-items-center">
+                        <input hidden name="Schedules[@iterator].ScheduleDate" value="@Sch.ScheduleDate">
+                        <input hidden name="Schedules[@iterator].Id" value="@Sch.Id">
+                        <label for="Schedules[@iterator].LectPeriod">Period: </label>
+                        <select class="form-control" name="Schedules[@iterator].LectPeriod">
+                            @if (Sch.LectPeriod == 1)
+                            {
+                                <option value="1" selected>First</option>
+                                <option value="2">Second</option>
+                                <option value="3">Third</option>
+                            }
+                            else if (Sch.LectPeriod == 2)
+                            {
+                                <option value="1">First</option>
+                                <option value="2" selected>Second</option>
+                                <option value="3">Third</option>
+                            }
+                            else
+                            {
+                                <option value="1">First</option>
+                                <option value="2">Second</option>
+                                <option value="3" selected>Third</option>
+                            }
+                        </select>
+                        <label for="Schedules[@iterator].AddSchedule">Change: </label>
+                        @if (Sch.Id == 0)
+                        {
+                            <input name="Schedules[@iterator].AddSchedule" onclick="CheckBox(this)" type="checkbox" value="0">
+                        }
+                        else
+                        {
+                            <input name="Schedules[@iterator].AddSchedule" onclick="CheckBox(this)" type="checkbox" checked value="1">
+                        }
+                    </div>
+                    </div>
+                    ++iterator;
+                    if(iterator%5 == 0)
+                    {
+                        <br />
+                    }
+                }
+            </div>
+                <button class="btn btn-primary col-12">Update</button>
+            </form>
+        }
+    </div>
+
+    <script>
+        function CheckBox(ele){
+            ele.value = ele.value == 0 ? 1 : 0;
+        }
+    </script>

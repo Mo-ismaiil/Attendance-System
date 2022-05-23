@@ -1,0 +1,161 @@
+﻿@model attendanceViewModel
+
+@{
+}
+   
+    
+    
+    <div class="alert-success" style="width: 80%; margin: auto; padding: 1em">
+        <h2>assign students attendance:</h2>
+        <form  class="form-inline">
+            <div class="row">
+                <input asp-for="date" class="form-control w-25">
+                <select asp-items="Model.Departments" asp-for="selectedDeptID" class="form-control w-25">
+                    <option hidden > select a department </option>
+                </select>
+             <input type="submit" value="Show students" class="btn btn-warning  w-25"/>
+             </div>
+        </form>
+        
+    </div>
+
+    <div class="row d-flex justify-content-center my-3">
+        <div class="col-xl-10">
+            <!-- code for the card list -->
+            @if (Model.Absentstudents != null)
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="card mx-4">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center justify-content-between">
+                                Absent Students
+                                <button class="btn btn-success mx-2" onclick="save()">save</button>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column flex-wrap">
+                            @foreach (Student std in Model.Absentstudents)
+                            {
+                                <button class="btn btn-lg btn-light mb-1" onclick="addStudent(this,@std.StudentId)"> @std.StudentId, @std.User.FullNameEn </button>
+                            }
+                        </div>
+                    </div>
+                    @if (Model.Attendedstudents!= null && Model.Attendedstudents.Count()!= 0)
+                {
+                    <div class="card mx-4">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center justify-content-between">
+                                Attended Students
+                                <button class="btn btn-danger mx-2" onclick="undo()"> Undo <i class="fas fa-undo"></i> </button>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column flex-wrap" id="attendedStds">
+                            @foreach (Student std in Model.Attendedstudents)
+                            {
+                                <button class="btn btn-lg btn-light mb-1" onclick="removeStudent(this,@std.StudentId)"> @std.StudentId: @std.User.FullNameEn </button>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+
+            }
+        </div>
+    </div>
+
+    @section scripts{
+         <script>
+        let attended = [];
+        let absent = [];
+        let elementsRef = [];
+        let absentElementsRef = [];
+        //adding element temporary
+        function addStudent(element, id){
+            console.log(id);
+            console.log(element);
+            if(!element.classList.contains("checked")){
+                element.classList.remove("btn-light");
+                element.classList.add("btn-secondary");
+                element.classList.add("checked");
+                attended.push(id);
+                elementsRef.push(element);
+            }else{
+                element.classList.add("btn-light");
+                element.classList.remove("btn-secondary");
+                element.classList.remove("checked");
+                const index = elementsRef.indexOf(element);
+                if (index > -1) {
+                  elementsRef.splice(index, 1); 
+                  attended.splice(index, 1); 
+                }
+            }
+        }
+        function removeStudent(element, id){
+            if(!element.classList.contains("checked")){
+                element.classList.remove("btn-light");
+                element.classList.add("btn-secondary");
+                element.classList.add("checked");
+                absent.push(id);
+                absentElementsRef.push(element);
+            }else{
+                element.classList.add("btn-light");
+                element.classList.remove("btn-secondary");
+                element.classList.remove("checked");
+                const index = elementsRef.indexOf(element);
+                if (index > -1) {
+                  absentElementsRef.splice(index, 1); 
+                  absent.splice(index, 1); 
+                }
+            }
+        }
+
+        //request the server to save attendance
+        function save(){
+            //console.log(attended);
+            //console.log(elementsRef)
+            //ajax call to send the array to an action save in .net and bind with studentsIDs parameter
+            $(document).ready(function () {
+                students = attended;
+
+                $.ajax({
+                    type: "POST",
+                    url: "attendance/Save",
+                    data: {studentsIDs: students},
+                    dataType: "text",
+                    success: function (msg) {
+                        //empty the arrays to start again 
+                        elementsRef = [];
+                        attended =[];
+                        console.log("saved and sent to server");
+                        location.reload();
+                    },
+                    error: function (req, status, error) {
+                        console.log(error);
+                    }
+                });	
+            });
+        }
+
+        function undo(){
+            //alert("undo"+absent);
+            $(document).ready(function () {
+                students = absent;
+                $.ajax({
+                    type: "POST",
+                    url: "attendance/Undo",
+                    data: {studentsIDs: students},
+                    dataType: "text",
+                    success: function (msg) {
+                        //empty the arrays to start again 
+                        absentElementsRef = [];
+                        absent =[];
+                        console.log("saved and sent to server");
+                        location.reload();
+                    },
+                    error: function (req, status, error) {
+                        console.log(error);
+                    }
+                });	
+            });
+        }
+    </script>
+    }

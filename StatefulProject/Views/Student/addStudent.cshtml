@@ -1,0 +1,70 @@
+﻿@model StatefulProject.Student
+
+@{
+    ViewData["Title"] = "addStudent";
+}
+
+<h1>addStudent</h1>
+
+<h4>student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="addStudent">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StudentId" class="control-label"></label>
+                <input asp-for="StudentId" class="form-control" />
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.FullNameEn" class="control-label"></label>
+                <input asp-for="User.FullNameEn" class="form-control" />
+                <span asp-validation-for="User.FullNameEn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.FullNameAr" class="control-label"></label>
+                <input asp-for="User.FullNameAr" class="form-control" />
+                <span asp-validation-for="User.FullNameAr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.BirthDate" class="control-label"></label>
+                <input asp-for="User.BirthDate" class="form-control" />
+                <span asp-validation-for="User.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Gender" class="control-label"></label>
+                <input type="radio" asp-for="User.Gender" value="Male">
+                <label asp-for="User.Gender">Male</label><br>
+                <input type="radio" asp-for="User.Gender" value="Female">
+                <label asp-for="User.Gender">Female</label><br>
+                <span asp-validation-for="User.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <select asp-for="DepartmentId"   class="form-control" asp-items="ViewBag.departmentList">
+                    <option value="">Select department</option>
+                </select>
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="StudentStatus" class="control-label"></label>
+                <input asp-for="StudentStatus" value="Accepted" class="form-control" />
+                <span asp-validation-for="StudentStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+   <button type="button" class="btn btn-info" >
+             <a style="color:black" asp-action="ShowStudents">Back to List</a>
+        </button>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
